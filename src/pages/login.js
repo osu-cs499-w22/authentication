@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 
 function Login() {
+  const router = useRouter();
   const [ username, setUsername ] = useState("");
   const [ password, setPassword ] = useState("");
 
@@ -21,6 +23,7 @@ function Login() {
       console.log("== resBody:", resBody);
       console.log("== document.cookie:", document.cookie);
       // window.localStorage.setItem('token', resBody.token)
+      router.push(router.query.redirect || '/');
     }
   }
 
